@@ -3,7 +3,7 @@ import type { FeatureProps } from '@/components/FeatureCard';
 import type { PlanProps } from '@/components/PlanCard';
 import type { ChannelProps } from '@/components/ChannelCard';
 import type { InfoCardProps } from '@/components/InfoCard';
-import { ShieldOff, DownloadCloud, Headset, Zap, Star, Send, Package, Film, CreditCard, ShieldCheck, Bot, FastForward, Camera } from 'lucide-react';
+import { ShieldOff, DownloadCloud, Headset, Zap, Star, Send, Package, Film, CreditCard, ShieldCheck, Bot, FastForward, Camera, ListVideo } from 'lucide-react';
 
 export const APP_TITLE_CONFIG = "PomStar Premium";
 export const SUPPORT_EMAIL_CONFIG = "support@pomstarpremium.com";
@@ -67,7 +67,7 @@ export const FEATURES_CONFIG: FeatureProps[] = [
     dataAiHint: "speed fast"
   },
   {
-    icon: Camera, // Using Camera icon for Snapchat-style videos
+    icon: Camera,
     title: "Snapchat Style Videos",
     description: "Access exclusive Snapchat-style short videos, stories, and intimate content.",
     dataAiHint: "snapchat camera"
@@ -81,9 +81,9 @@ export const PLANS_CONFIG: PlanProps[] = [
     originalPrice: "",
     duration: "1 Month Access",
     features: [
-      "Ad-Free Experience", 
-      "Basic Content Library (via Bot)", 
-      "SD Quality Streaming", 
+      "Ad-Free Experience",
+      "Basic Content Library (via Bot)",
+      "Access to Desi, Videshi, Ullu & more",
       "Email Support"
     ],
     isPopular: false,
@@ -97,9 +97,9 @@ export const PLANS_CONFIG: PlanProps[] = [
     features: [
       "All Silver Features",
       "Full Content Library (via Bot)",
-      "HD Quality Streaming", 
+      "Varied Content: Desi, Videshi, Ullu etc.",
       "Unlimited Downloads",
-      "Priority Email Support", 
+      "Priority Email Support",
       "No Waiting Time"
     ],
     isPopular: false,
@@ -111,10 +111,10 @@ export const PLANS_CONFIG: PlanProps[] = [
     originalPrice: "₹897",
     duration: "3 Months Access",
     features: [
-      "All Gold Features", 
+      "All Gold Features",
+      "Extensive Content: Desi, Videshi, Ullu & more",
       "Exclusive Content & Snapchat Videos",
-      "Full HD/4K Streaming", 
-      "VIP Telegram Group Access", 
+      "VIP Telegram Group Access",
       "AI-Personalized Picks",
       "Request Support (Priority)"
     ],
@@ -139,7 +139,7 @@ export const CHANNELS_CONFIG: ChannelProps[] = [
     dataAiHint: "telegram backup"
   },
   {
-    icon: Bot, // Changed from Film to Bot for consistency with Free Videos Bot
+    icon: Bot, 
     name: "Free Videos Bot",
     description: "Get daily free video clips and updates via our Telegram bot.",
     url: FREE_VIDEOS_BOT_URL_CONFIG,
@@ -169,3 +169,4 @@ export const BILLING_INFO_CONFIG: InfoCardProps[] = [
 ];
 
 export const LAST_UPDATED_LEGAL_DATE = "July 28, 2024";
+
