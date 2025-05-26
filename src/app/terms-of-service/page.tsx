@@ -1,4 +1,6 @@
-import { TERMS_OF_SERVICE_TEXT, LAST_UPDATED_LEGAL_DATE } from '@/content/legal';
+
+import { TERMS_OF_SERVICE_TEXT } from '@/content/legal';
+import { LAST_UPDATED_LEGAL_DATE } from '@/config/appConfig';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { APP_TITLE_CONFIG } from '@/config/appConfig';
 import type { Metadata } from 'next';
