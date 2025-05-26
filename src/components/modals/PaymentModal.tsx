@@ -53,14 +53,16 @@ export function PaymentModal({ isOpen, onOpenChange, selectedPlan }: PaymentModa
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6 items-start">
           <div className="flex flex-col items-center space-y-3 p-4 border rounded-lg shadow-sm">
             <h3 className="text-lg font-semibold">Scan QR Code</h3>
-            <Image
-              src={qrCodeUrl}
-              alt={`QR Code for ${selectedPlan.name} payment`}
-              width={200}
-              height={200}
-              className="rounded-md border"
-              data-ai-hint="qr payment"
-            />
+            <div className="w-full max-w-[180px] sm:max-w-[200px] mx-auto">
+              <Image
+                src={qrCodeUrl}
+                alt={`QR Code for ${selectedPlan.name} payment`}
+                width={200} 
+                height={200}
+                className="rounded-md border w-full h-auto"
+                data-ai-hint="qr payment"
+              />
+            </div>
             <div className="flex items-center space-x-2 pt-2">
               <p className="text-sm font-medium">UPI ID: <span className="font-mono text-primary">{UPI_ID_CONFIG}</span></p>
               <Button variant="ghost" size="icon" onClick={handleCopyUpiId} aria-label="Copy UPI ID">

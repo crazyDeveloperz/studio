@@ -11,7 +11,7 @@ export function AppLogo() {
 
 
   return (
-    <Link href="/" className="flex items-center gap-2 text-xl font-bold">
+    <Link href="/" className="flex items-center gap-2 text-lg sm:text-xl font-bold">
       <Film className="h-7 w-7 text-primary" />
       <span>{mainTitle}</span>
       {premiumText && <span className="text-primary">{premiumText}</span>}

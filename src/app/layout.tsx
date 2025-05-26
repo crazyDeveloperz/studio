@@ -20,6 +20,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: APP_TITLE_CONFIG,
   description: `Unlock exclusive adult entertainment with ${APP_TITLE_CONFIG}. Ad-free, downloads, and a vast library.`,
+  viewport: 'width=device-width, initial-scale=1',
 };
 
 export default function RootLayout({
