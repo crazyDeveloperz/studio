@@ -6,6 +6,7 @@ export default {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{ts,tsx}", // Added to ensure all src files are scanned
   ],
   theme: {
   	extend: {
@@ -66,6 +67,10 @@ export default {
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
+  		fontFamily: {
+        sans: ["var(--font-geist-sans)"],
+        mono: ["var(--font-geist-mono)"],
+      },
   		keyframes: {
   			'accordion-down': {
   				from: {
@@ -87,8 +92,54 @@ export default {
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out'
-  		}
+  		},
+      typography: ({ theme }: { theme: any }) => ({
+        DEFAULT: {
+          css: {
+            '--tw-prose-body': theme('colors.foreground / 1'),
+            '--tw-prose-headings': theme('colors.foreground / 1'),
+            '--tw-prose-lead': theme('colors.muted.foreground / 1'),
+            '--tw-prose-links': theme('colors.primary / 1'),
+            '--tw-prose-bold': theme('colors.foreground / 1'),
+            '--tw-prose-counters': theme('colors.muted.foreground / 1'),
+            '--tw-prose-bullets': theme('colors.muted.foreground / 1'),
+            '--tw-prose-hr': theme('colors.border / 1'),
+            '--tw-prose-quotes': theme('colors.foreground / 1'),
+            '--tw-prose-quote-borders': theme('colors.primary / 1'),
+            '--tw-prose-captions': theme('colors.muted.foreground / 1'),
+            '--tw-prose-code': theme('colors.foreground / 1'),
+            '--tw-prose-pre-code': theme('colors.foreground / 1'),
+            '--tw-prose-pre-bg': theme('colors.muted / 1'),
+            '--tw-prose-th-borders': theme('colors.border / 1'),
+            '--tw-prose-td-borders': theme('colors.border / 1'),
+          },
+        },
+        sm: {
+          css: {
+            fontSize: theme('fontSize.sm[0]'),
+            lineHeight: theme('fontSize.sm[1].lineHeight'),
+            p: {
+              marginTop: theme('spacing.3'),
+              marginBottom: theme('spacing.3'),
+            },
+            '[class~="lead"]': {
+              fontSize: theme('fontSize.base[0]'),
+              lineHeight: theme('fontSize.base[1].lineHeight'),
+              marginTop: theme('spacing.4'),
+              marginBottom: theme('spacing.4'),
+            },
+          },
+        },
+        base: {
+          css: {
+             p: {
+              marginTop: theme('spacing.4'),
+              marginBottom: theme('spacing.4'),
+            },
+          }
+        },
+      }),
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require('@tailwindcss/typography')],
 } satisfies Config;
