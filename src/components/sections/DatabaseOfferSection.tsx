@@ -71,14 +71,14 @@ export function DatabaseOfferSection({ onGetOffer }: DatabaseOfferSectionProps) 
             
             <div className="mb-8">
               <h3 className="text-xl font-semibold text-center mb-6 text-foreground">Channel Preview:</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 {offer.screenshots.map((screenshot, index) => (
                   <div key={index} className="rounded-lg overflow-hidden shadow-lg border border-border aspect-[16/10]">
                     <Image
                       src={screenshot.src}
                       alt={screenshot.alt}
-                      width={400}
-                      height={250}
+                      width={600}
+                      height={375}
                       className="w-full h-full object-cover"
                       data-ai-hint={screenshot.dataAiHint}
                     />
