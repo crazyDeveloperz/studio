@@ -1,6 +1,7 @@
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, type LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export interface PlanProps {
@@ -10,11 +11,12 @@ export interface PlanProps {
   duration: string;
   features: string[];
   isPopular?: boolean;
-  accentColor?: boolean; // For Gold plan style
+  accentColor?: boolean; 
   onGetPlan: () => void;
+  icon?: LucideIcon; // Optional: For plan-specific icon like Infinity for Lifetime
 }
 
-export function PlanCard({ name, price, originalPrice, duration, features, isPopular, accentColor, onGetPlan }: PlanProps) {
+export function PlanCard({ name, price, originalPrice, duration, features, isPopular, accentColor, onGetPlan, icon: Icon }: PlanProps) {
   return (
     <Card className={cn(
       "flex flex-col shadow-lg transition-all duration-300 hover:scale-105 h-full",
@@ -27,7 +29,10 @@ export function PlanCard({ name, price, originalPrice, duration, features, isPop
             Popular
           </div>
         )}
-        <CardTitle className="text-2xl font-bold">{name}</CardTitle>
+        <div className="flex items-center gap-2">
+          {Icon && <Icon className={cn("h-7 w-7", isPopular || accentColor ? "text-accent" : "text-primary")} />}
+          <CardTitle className="text-2xl font-bold">{name}</CardTitle>
+        </div>
         <div className="flex items-baseline gap-2 mt-2">
           <span className="text-4xl font-extrabold text-primary">{price}</span>
           {originalPrice && <span className="text-md line-through text-muted-foreground">{originalPrice}</span>}
@@ -37,8 +42,8 @@ export function PlanCard({ name, price, originalPrice, duration, features, isPop
       <CardContent className="flex-grow">
         <ul className="space-y-3">
           {features.map((feature, index) => (
-            <li key={index} className="flex items-center">
-              <CheckCircle className="mr-2 h-5 w-5 text-green-500" />
+            <li key={index} className="flex items-start">
+              <CheckCircle className="mr-2 h-5 w-5 text-green-500 shrink-0 mt-0.5" />
               <span className="text-muted-foreground">{feature}</span>
             </li>
           ))}

@@ -1,17 +1,17 @@
+
 "use client";
 
-import { useState } from 'react';
 import { PlanCard, type PlanProps as PlanCardData } from '@/components/PlanCard';
-import { PaymentModal } from '@/components/modals/PaymentModal';
 import { PLANS_CONFIG } from '@/config/appConfig';
+import type { SelectedPlanForModal } from '@/app/page';
 
-export function PlansSection() {
-  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState<Pick<PlanCardData, 'name' | 'price'> | null>(null);
+interface PlansSectionProps {
+  onGetPlan: (planDetails: SelectedPlanForModal) => void;
+}
 
-  const handleGetPlan = (plan: Pick<PlanCardData, 'name' | 'price'>) => {
-    setSelectedPlan(plan);
-    setIsPaymentModalOpen(true);
+export function PlansSection({ onGetPlan }: PlansSectionProps) {
+  const handlePlanSelect = (plan: Pick<PlanCardData, 'name' | 'price'>) => {
+    onGetPlan(plan);
   };
 
   return (
@@ -25,23 +25,16 @@ export function PlansSection() {
             Select a subscription that fits your needs and unlock exclusive content.
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 items-stretch">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-stretch">
           {PLANS_CONFIG.map((plan) => (
             <PlanCard
               key={plan.name}
               {...plan}
-              onGetPlan={() => handleGetPlan({ name: plan.name, price: plan.price })}
+              onGetPlan={() => handlePlanSelect({ name: plan.name, price: plan.price })}
             />
           ))}
         </div>
       </div>
-      {selectedPlan && (
-        <PaymentModal
-          isOpen={isPaymentModalOpen}
-          onOpenChange={setIsPaymentModalOpen}
-          selectedPlan={selectedPlan}
-        />
-      )}
     </section>
   );
 }

@@ -3,7 +3,7 @@ import type { FeatureProps } from '@/components/FeatureCard';
 import type { PlanProps } from '@/components/PlanCard';
 import type { ChannelProps } from '@/components/ChannelCard';
 import type { InfoCardProps } from '@/components/InfoCard';
-import { ShieldOff, DownloadCloud, Headset, Zap, Star, Send, Package, Film, CreditCard, ShieldCheck, Bot, FastForward, Camera, ListVideo } from 'lucide-react';
+import { ShieldOff, DownloadCloud, Headset, Zap, Star, Send, Package, Film, CreditCard, ShieldCheck, Bot, FastForward, Camera, ListVideo, Database, InfinityIcon } from 'lucide-react';
 
 export const APP_TITLE_CONFIG = "PomStar Premium";
 export const SUPPORT_EMAIL_CONFIG = "support@pomstarpremium.com";
@@ -18,10 +18,45 @@ export const FREE_VIDEOS_BOT_URL_CONFIG = "https://t.me/freevideosbot"; // Repla
 
 export const NAV_LINKS_CONFIG = [
   { href: "#free-videos", label: "Free Videos" },
+  { href: "#database-offer", label: "Database Access" },
   { href: "#features", label: "Features" },
   { href: "#channels", label: "Channels" },
   { href: "#plans", label: "Plans" },
 ];
+
+export interface DatabaseChannelOfferConfig {
+  title: string;
+  subtitle: string;
+  description: string;
+  price: string;
+  duration: string;
+  features: string[];
+  screenshots: Array<{ src: string; alt: string; dataAiHint: string }>;
+  buttonText: string;
+  id: string; // For payment modal
+}
+
+export const DATABASE_CHANNEL_OFFER_CONFIG: DatabaseChannelOfferConfig = {
+  id: "database_channel_access",
+  title: "Exclusive Database Channel Access!",
+  subtitle: "Over 100,000+ Videos Waiting For You!",
+  description: "Get direct access to our massive video database channel. This special offer gives you 6 months of unparalleled content variety.",
+  price: "₹199",
+  duration: "6 Months Access",
+  features: [
+    "Access 100,000+ video library",
+    "Desi, Videshi, Ullu & more content",
+    "Direct Telegram channel access",
+    "Regular updates"
+  ],
+  screenshots: [
+    { src: "https://placehold.co/400x250.png", alt: "Screenshot of video database 1", dataAiHint: "database video library" },
+    { src: "https://placehold.co/400x250.png", alt: "Screenshot of video database 2", dataAiHint: "telegram channel interface" },
+    { src: "https://placehold.co/400x250.png", alt: "Screenshot of video database 3", dataAiHint: "video content variety" },
+  ],
+  buttonText: "Get Database Access - ₹199",
+  dataAiHintScreenshots: "video library telegram"
+};
 
 export const FEATURES_CONFIG: FeatureProps[] = [
   {
@@ -55,7 +90,7 @@ export const FEATURES_CONFIG: FeatureProps[] = [
     dataAiHint: "telegram chat"
   },
   {
-    icon: Bot, 
+    icon: Bot,
     title: "AI-Personalized Picks",
     description: "Discover content tailored to your taste with our smart recommendations.",
     dataAiHint: "robot ai"
@@ -78,12 +113,11 @@ export const PLANS_CONFIG: PlanProps[] = [
   {
     name: "Silver",
     price: "₹299",
-    originalPrice: "",
     duration: "1 Month Access",
     features: [
       "Ad-Free Experience",
       "Basic Content Library (via Bot)",
-      "Access to Desi, Videshi, Ullu & more",
+      "Content: Desi, Videshi, Ullu & more",
       "Email Support"
     ],
     isPopular: false,
@@ -121,6 +155,22 @@ export const PLANS_CONFIG: PlanProps[] = [
     isPopular: true,
     accentColor: true, // Button will be accent, ring will be primary
   },
+  {
+    name: "Lifetime Premium",
+    price: "₹1999",
+    duration: "Lifetime Access",
+    features: [
+      "All Diamond Features",
+      "Unlimited Videos via Premium Bot",
+      "Permanent Access to All Content",
+      "Top Priority Support",
+      "Early Access to New Features",
+      "Special Lifetime Member Badge"
+    ],
+    isPopular: false,
+    accentColor: false, // Consider making this visually distinct
+    icon: InfinityIcon, // Optional: if PlanCard can render an icon in title
+  },
 ];
 
 export const CHANNELS_CONFIG: ChannelProps[] = [
@@ -139,7 +189,7 @@ export const CHANNELS_CONFIG: ChannelProps[] = [
     dataAiHint: "telegram backup"
   },
   {
-    icon: Bot, 
+    icon: Bot,
     name: "Free Videos Bot",
     description: "Get daily free video clips and updates via our Telegram bot.",
     url: FREE_VIDEOS_BOT_URL_CONFIG,
@@ -169,4 +219,3 @@ export const BILLING_INFO_CONFIG: InfoCardProps[] = [
 ];
 
 export const LAST_UPDATED_LEGAL_DATE = "July 28, 2024";
-
