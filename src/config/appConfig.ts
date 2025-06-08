@@ -34,13 +34,14 @@ export interface DatabaseChannelOfferConfig {
   screenshots: Array<{ src: string; alt: string; dataAiHint: string }>;
   buttonText: string;
   id: string; // For payment modal
+  dataAiHintScreenshots?: string; // Optional overall hint for the section
 }
 
 export const DATABASE_CHANNEL_OFFER_CONFIG: DatabaseChannelOfferConfig = {
   id: "database_channel_access",
   title: "Exclusive Database Channel Access!",
   subtitle: "Over 100,000+ Videos Waiting For You!",
-  description: "Get direct access to our massive video database channel. This special offer gives you 6 months of unparalleled content variety.",
+  description: "Unlock direct access to our massive 100,000+ video database Telegram channel with this exclusive 6-month offer. This is a standalone offer, separate from our bot-based subscription plans.",
   price: "₹199",
   duration: "6 Months Access",
   features: [
@@ -52,7 +53,7 @@ export const DATABASE_CHANNEL_OFFER_CONFIG: DatabaseChannelOfferConfig = {
   screenshots: [
     { src: "https://placehold.co/400x250.png", alt: "Screenshot of video database 1", dataAiHint: "database video library" },
     { src: "https://placehold.co/400x250.png", alt: "Screenshot of video database 2", dataAiHint: "telegram channel interface" },
-    { src: "https://placehold.co/400x250.png", alt: "Screenshot of video database 3", dataAiHint: "video content variety" },
+    { src: "https://envs.sh/fp4.jpg", alt: "Screenshot of video database 3", dataAiHint: "video content variety" },
   ],
   buttonText: "Get Database Access - ₹199",
   dataAiHintScreenshots: "video library telegram"
@@ -68,7 +69,7 @@ export const FEATURES_CONFIG: FeatureProps[] = [
   {
     icon: DownloadCloud,
     title: "Unlimited Downloads",
-    description: "Download your favorite videos to watch offline anytime, anywhere.",
+    description: "Download your favorite videos to watch offline anytime, anywhere (via bot plans).",
     dataAiHint: "cloud download"
   },
   {
@@ -86,13 +87,13 @@ export const FEATURES_CONFIG: FeatureProps[] = [
   {
     icon: Star,
     title: "Premium Telegram Access",
-    description: "Join our exclusive Telegram channels for members only, with content delivered by our premium bot.",
+    description: "Join our exclusive Telegram channels for members only, with content delivered by our premium bot or direct database access.",
     dataAiHint: "telegram chat"
   },
   {
     icon: Bot,
     title: "AI-Personalized Picks",
-    description: "Discover content tailored to your taste with our smart recommendations.",
+    description: "Discover content tailored to your taste with our smart recommendations (via bot plans).",
     dataAiHint: "robot ai"
   },
   {
@@ -104,7 +105,7 @@ export const FEATURES_CONFIG: FeatureProps[] = [
   {
     icon: Camera,
     title: "Snapchat Style Videos",
-    description: "Access exclusive Snapchat-style short videos, stories, and intimate content.",
+    description: "Access exclusive Snapchat-style short videos, stories, and intimate content (selected plans).",
     dataAiHint: "snapchat camera"
   },
 ];
@@ -122,6 +123,7 @@ export const PLANS_CONFIG: PlanProps[] = [
     ],
     isPopular: false,
     accentColor: false,
+    onGetPlan: () => {}, // Placeholder, will be overridden in PlansSection
   },
   {
     name: "Gold",
@@ -132,12 +134,13 @@ export const PLANS_CONFIG: PlanProps[] = [
       "All Silver Features",
       "Full Content Library (via Bot)",
       "Varied Content: Desi, Videshi, Ullu etc.",
-      "Unlimited Downloads",
+      "Unlimited Downloads (via Bot)",
       "Priority Email Support",
       "No Waiting Time"
     ],
     isPopular: false,
     accentColor: true,
+    onGetPlan: () => {}, // Placeholder
   },
   {
     name: "Diamond",
@@ -146,30 +149,32 @@ export const PLANS_CONFIG: PlanProps[] = [
     duration: "3 Months Access",
     features: [
       "All Gold Features",
-      "Extensive Content: Desi, Videshi, Ullu & more",
+      "Extensive Content Library (via Bot)",
       "Exclusive Content & Snapchat Videos",
-      "VIP Telegram Group Access",
-      "AI-Personalized Picks",
+      "VIP Telegram Group Access (Bot Users)",
+      "AI-Personalized Picks (via Bot)",
       "Request Support (Priority)"
     ],
     isPopular: true,
     accentColor: true, // Button will be accent, ring will be primary
+    onGetPlan: () => {}, // Placeholder
   },
   {
     name: "Lifetime Premium",
     price: "₹1999",
-    duration: "Lifetime Access",
+    duration: "Lifetime Access (Bot)",
     features: [
       "All Diamond Features",
       "Unlimited Videos via Premium Bot",
-      "Permanent Access to All Content",
+      "Permanent Access to All Bot Content",
       "Top Priority Support",
-      "Early Access to New Features",
+      "Early Access to New Bot Features",
       "Special Lifetime Member Badge"
     ],
     isPopular: false,
-    accentColor: false, // Consider making this visually distinct
-    icon: InfinityIcon, // Optional: if PlanCard can render an icon in title
+    accentColor: false, 
+    icon: InfinityIcon, 
+    onGetPlan: () => {}, // Placeholder
   },
 ];
 
@@ -219,3 +224,4 @@ export const BILLING_INFO_CONFIG: InfoCardProps[] = [
 ];
 
 export const LAST_UPDATED_LEGAL_DATE = "July 28, 2024";
+
