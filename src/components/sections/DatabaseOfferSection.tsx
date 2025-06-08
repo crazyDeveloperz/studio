@@ -96,19 +96,18 @@ export function DatabaseOfferSection({ onGetOffer }: DatabaseOfferSectionProps) 
               >
                 {offer.buttonText}
               </Button>
-              <p className="text-sm text-muted-foreground max-w-md mx-auto">
+              <p className="text-sm text-muted-foreground max-w-md mx-auto pt-2">
                 After successful payment via the modal (opened by the button above), please send a screenshot of your payment to the admin on Telegram to receive your exclusive database channel link.
               </p>
               <Button
                 asChild
-                size="md"
-                variant="outline"
-                className="border-accent text-accent hover:bg-accent/10 hover:text-accent w-full sm:w-auto"
+                size="lg"
+                className="bg-accent hover:bg-accent/90 text-accent-foreground text-lg px-10 py-7 shadow-lg w-full sm:w-auto"
               >
                 <a href={ownerTelegramLink} target="_blank" rel="noopener noreferrer">
-                  <Send className="mr-2 h-4 w-4" />
+                  <Send className="mr-2 h-5 w-5" />
                   Connect with Admin on Telegram
-                  <ExternalLink className="ml-2 h-3 w-3" />
+                  <ExternalLink className="ml-2 h-4 w-4" />
                 </a>
               </Button>
             </div>
@@ -118,3 +117,4 @@ export function DatabaseOfferSection({ onGetOffer }: DatabaseOfferSectionProps) 
     </section>
   );
 }
+
