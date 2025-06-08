@@ -4,8 +4,8 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { DATABASE_CHANNEL_OFFER_CONFIG } from '@/config/appConfig';
-import { CheckCircle, Zap } from 'lucide-react';
+import { DATABASE_CHANNEL_OFFER_CONFIG, OWNER_TELEGRAM_USERNAME_CONFIG } from '@/config/appConfig';
+import { CheckCircle, Zap, Send, ExternalLink } from 'lucide-react';
 
 interface DatabaseOfferSectionProps {
   onGetOffer: (offer: { name: string; price: string }) => void;
@@ -13,6 +13,7 @@ interface DatabaseOfferSectionProps {
 
 export function DatabaseOfferSection({ onGetOffer }: DatabaseOfferSectionProps) {
   const offer = DATABASE_CHANNEL_OFFER_CONFIG;
+  const ownerTelegramLink = `https://t.me/${OWNER_TELEGRAM_USERNAME_CONFIG}`;
 
   // Guard clause to check if the offer configuration is loaded and has screenshots
   if (!offer || !offer.screenshots || !Array.isArray(offer.screenshots)) {
@@ -87,13 +88,28 @@ export function DatabaseOfferSection({ onGetOffer }: DatabaseOfferSectionProps) 
               </div>
             </div>
 
-            <div className="text-center">
+            <div className="text-center space-y-4">
               <Button
                 size="lg"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-10 py-7 shadow-lg"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-10 py-7 shadow-lg w-full sm:w-auto"
                 onClick={handleGetOfferClick}
               >
                 {offer.buttonText}
+              </Button>
+              <p className="text-sm text-muted-foreground max-w-md mx-auto">
+                After successful payment via the modal (opened by the button above), please send a screenshot of your payment to the admin on Telegram to receive your exclusive database channel link.
+              </p>
+              <Button
+                asChild
+                size="md"
+                variant="outline"
+                className="border-accent text-accent hover:bg-accent/10 hover:text-accent w-full sm:w-auto"
+              >
+                <a href={ownerTelegramLink} target="_blank" rel="noopener noreferrer">
+                  <Send className="mr-2 h-4 w-4" />
+                  Connect with Admin on Telegram
+                  <ExternalLink className="ml-2 h-3 w-3" />
+                </a>
               </Button>
             </div>
           </CardContent>
