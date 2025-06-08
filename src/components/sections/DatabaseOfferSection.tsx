@@ -4,7 +4,7 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { DATABASE_CHANNEL_OFFER_CONFIG, type DatabaseChannelOfferConfig } from '@/config/appConfig';
+import { DATABASE_CHANNEL_OFFER_CONFIG } from '@/config/appConfig';
 import { CheckCircle, Zap } from 'lucide-react';
 
 interface DatabaseOfferSectionProps {
@@ -14,8 +14,27 @@ interface DatabaseOfferSectionProps {
 export function DatabaseOfferSection({ onGetOffer }: DatabaseOfferSectionProps) {
   const offer = DATABASE_CHANNEL_OFFER_CONFIG;
 
+  // Guard clause to check if the offer configuration is loaded and has screenshots
+  if (!offer || !offer.screenshots || !Array.isArray(offer.screenshots)) {
+    console.error("DatabaseOfferSection: DATABASE_CHANNEL_OFFER_CONFIG is missing, malformed, or screenshots are not an array.", offer);
+    return (
+      <section id="database-offer" className="py-16 md:py-24 bg-secondary/20">
+        <div className="container mx-auto px-4 md:px-6 text-center">
+          <h2 className="text-2xl font-bold text-red-600">Error Loading Offer Section</h2>
+          <p className="text-muted-foreground">The configuration for this section could not be loaded. Please check the console for more details.</p>
+        </div>
+      </section>
+    );
+  }
+
   const handleGetOfferClick = () => {
-    onGetOffer({ name: offer.title, price: offer.price });
+    // Ensure offer and its properties are valid before using them
+    if (offer && offer.title && offer.price) {
+      onGetOffer({ name: offer.title, price: offer.price });
+    } else {
+      console.error("DatabaseOfferSection: Cannot call onGetOffer because offer title or price is missing.");
+      // Optionally, show a user-facing error or disable the button
+    }
   };
 
   return (
