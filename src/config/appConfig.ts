@@ -9,7 +9,7 @@ export const APP_TITLE_CONFIG = "PomStar Premium";
 export const SUPPORT_EMAIL_CONFIG = "support@pomstarpremium.com";
 export const UPI_ID_CONFIG = "yourupiid@okhdfcbank"; // Replace with actual UPI ID
 export const OWNER_TELEGRAM_USERNAME_CONFIG = "yourtelegramadmin"; // Replace with actual Telegram username
-export const QR_CODE_IMAGE_BASE_URL_CONFIG = "https://placehold.co/250x250.png";
+export const QR_CODE_IMAGE_BASE_URL_CONFIG = "https://files.catbox.moe/dgkc2t.jpg";
 export const QR_CODE_TEXT_PREFIX_CONFIG = "Scan for "; // e.g. "Scan for Silver Plan"
 
 export const PREMIUM_CHANNEL_URL_CONFIG = "https://t.me/premiumchannel"; // Replace with actual URL
